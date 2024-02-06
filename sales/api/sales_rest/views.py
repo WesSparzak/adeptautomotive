@@ -5,12 +5,6 @@ from django.http import JsonResponse
 from common.json import ModelEncoder
 import json
 
-class AutomobileEncoder(ModelEncoder):
-    model = AutomobileVO
-    properties = [
-        'vin',
-        'sold',
-    ]
 
 
 class SalespersonEncoder(ModelEncoder):
@@ -21,6 +15,41 @@ class SalespersonEncoder(ModelEncoder):
         'last_name',
         'employee_id',
     ]
+
+
+class CustomerEncoder(ModelEncoder):
+    model = Customer
+    properties = [
+        'id',
+        'first_name',
+        'last_name',
+        'address',
+        'phone_number',
+    ]
+
+
+class AutomobileVOEncoder(ModelEncoder):
+    model = AutomobileVO
+    properties = [
+        'vin',
+        'id',
+    ]
+
+class SaleEncoder(ModelEncoder):
+    model = Sale
+    properties = [
+        'id',
+        'price',
+        'automobile',
+        'salesperson',
+        'customer'
+    ]
+    encoders = {
+        'automobile': AutomobileVOEncoder(),
+        'salesperson': SalespersonEncoder(),
+        'customer': CustomerEncoder(),
+    }
+
 
 @require_http_methods(["GET", "POST"])
 def salesperson_list(request):
@@ -40,7 +69,6 @@ def salesperson_list(request):
         )
              
 
-
 @require_http_methods(["DELETE"])
 def salesperson_delete(request, id):
     if request.method == "DELETE":
@@ -48,16 +76,6 @@ def salesperson_delete(request, id):
         return JsonResponse({"deleted": count > 0})
 
     
-class CustomerEncoder(ModelEncoder):
-    model = Customer
-    properties = [
-        'id',
-        'first_name',
-        'last_name',
-        'address',
-        'phone_number',
-    ]
-
 @require_http_methods(["GET", "POST"])
 def customer_list(request):
     if request.method == "GET":
@@ -75,40 +93,56 @@ def customer_list(request):
             safe=False
         )
     
+
 @require_http_methods(["DELETE"])
 def customer_delete(request, id):
     if request.method == "DELETE":
         count, _ = Customer.objects.filter(id=id).delete()
         return JsonResponse({'deleted': count > 0})
 
-class SaleEncoder(ModelEncoder):
-    model = Sale
-    properties = [
-        'id',
-        'price',
-    ]
-    encoders = {
-        'automobile': AutomobileEncoder(),
-        'salesperson': SalespersonEncoder(),
-        'customer': CustomerEncoder(),
-    }
 
 @require_http_methods(["GET", "POST"])
 def sales_list(request):
     if request.method == "GET":
         sale = Sale.objects.all()
         return JsonResponse(
-            sale,
+            { 'sale': sale },
             encoder=SaleEncoder,
-            safe=False
         )
     else:
         content = json.loads(request.body)
+        try:
+            vin = content['automobile']
+            automobile = AutomobileVO.objects.get(vin=vin)
+            content["automobile"] = automobile
+        except AutomobileVO.DoesNotExist:
+            return JsonResponse(
+                {"message": "automobile doesn't exist"},
+                status=400,
+            )
+        try:
+            id = content['salesperson']
+            salesperson = Salesperson.objects.get(id=id)
+            content["salesperson"] = salesperson
+        except Salesperson.DoesNotExist:
+            return JsonResponse(
+                {"message": "salesperson doesn't exist"},
+                status=400,
+            )
+        try:
+            id = content['customer']
+            customer = Customer.objects.get(id=id)
+            content["customer"] = customer
+        except Customer.DoesNotExist:
+            return JsonResponse(
+                {"message": "customer doesn't exist"},
+                status=400,
+            )
         sale = Sale.objects.create(**content)
         return JsonResponse(
             sale,
             encoder=SaleEncoder,
-            safe=False
+            safe=False,
         )
     
 

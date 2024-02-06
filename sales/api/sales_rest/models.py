@@ -2,8 +2,7 @@ from django.db import models
 
 
 class AutomobileVO(models.Model):
-    vin = models.CharField(max_length=200)
-    sold = models.BooleanField()
+    vin = models.CharField(max_length=17, unique=True)
 
 
 class Salesperson(models.Model):
@@ -20,7 +19,7 @@ class Customer(models.Model):
 class Sale(models.Model):
     automobile = models.ForeignKey(
         AutomobileVO,
-        related_name="sale",
+        related_name="sales",
         on_delete=models.CASCADE,
     )
     salesperson = models.ForeignKey(

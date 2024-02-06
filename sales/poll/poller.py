@@ -12,20 +12,25 @@ django.setup()
 from sales_rest.models import AutomobileVO
 
 
-def get_automobiles():
-    url = 'http://localhost:8100/api/automobiles/'
+def get_automobile():
+    url = 'http://project-beta-inventory-api-1:8000/api/automobiles/'
     response = requests.get(url)
     content = json.loads(response.content)
-    for automobile in content['automobiles']:
+    print("just polled")
+    print("AutomobileVO", AutomobileVO.objects.all())
+    print("content", content)
+    for automobile in content['autos']:
+        print("automobile", automobile)
         AutomobileVO.objects.update_or_create(
-            import_vin=automobile['vin'],
+            vin=automobile['vin']
         )
-
+    print(len(AutomobileVO.objects.all()), "flibbyflabby")
 def poll():
     while True:
         print('Sales poll poll poll poll polling')
         try:
-            get_automobiles()
+            get_automobile()
+            pass
         except Exception as e:
             print(e, file=sys.stderr)
 
