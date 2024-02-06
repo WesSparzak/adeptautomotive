@@ -13,17 +13,31 @@ django.setup()
 # from service_rest.models import Something
 
 
+import requests
+from service_rest.models import AutomobileVO
+
+def get_automobile():
+    url = "http://localhost:8100/api/automobiles/"
+    response = requests.get(url)
+    content = response.json()
+    print ("Just polled...")
+    print ("AutomobileVO", AutomobileVO.objects.all())
+    print ("content", content)
+    for automobile in content["automobiles"]:
+        print ("automobile", automobile)
+        AutomobileVO.objects.update_or_create(
+            import_href=automobile["href"], #unique identifier
+            defaults={"name": automobile["name"], "description": automobile["description"]} #everything else
+        )
+
 def poll():
     while True:
-        print('Service poller polling for data')
+        print('Autmobile poller pulling automobiles')
         try:
-            # Write your polling logic, here
-            # Do not copy entire file
-            pass
-        
+            get_automobile()
+
         except Exception as e:
             print(e, file=sys.stderr)
-
         time.sleep(60)
 
 
