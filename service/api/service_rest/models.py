@@ -7,6 +7,8 @@ from django.urls import reverse
 class AutomobileVO(models.Model):
     import_href = models.CharField(max_length=200, unique=True)
     name = models.CharField(max_length=200)
+    vin = models.CharField(max_length=200, default="DEFAULT_VIN")
+    sold = models.BooleanField(default=False)
 
 class Technician(models.Model):
 
@@ -16,7 +18,7 @@ class Technician(models.Model):
 
 
     def get_api_url(self):
-        return reverse("api_show_location", kwargs={"pk": self.pk})
+        return reverse("api_list_technician", kwargs={"pk": self.pk})
 
     def __str__(self):
         return self.first_name

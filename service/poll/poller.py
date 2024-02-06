@@ -17,7 +17,7 @@ import requests
 from service_rest.models import AutomobileVO
 
 def get_automobile():
-    url = "http://localhost:8100/api/automobiles/"
+    url = "http://project-beta-inventory-api-1:8000/api/automobiles/"
     response = requests.get(url)
     content = response.json()
     print ("Just polled...")
@@ -32,7 +32,7 @@ def get_automobile():
 
 def poll():
     while True:
-        print('Autmobile poller pulling automobiles')
+        print("Automobile poller pulling automobiles")
         try:
             get_automobile()
 
