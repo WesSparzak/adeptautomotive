@@ -3,6 +3,7 @@ from django.http import JsonResponse
 from django.views.decorators.http import require_http_methods
 from .models import Appointment, Technician
 from common.json import ModelEncoder
+from django.db.models import Q
 #######################################
 #####ENCODERS##########################
 
@@ -164,7 +165,28 @@ def api_finish_appointment(request, pk):
 
 
 
+def search_appointments(request):
+    if request.method == 'POST':
+        vin = request.POST.get('vin')
+        appointments = Appointment.objects.filter(vin=vin).select_related('technician').all()
+    else:
+        appointments = Appointment.objects.all().select_related('technician')
 
+    appointments_data = [
+        {
+            'vin': appt.vin,
+            'customer_name': appt.customer,
+            'date_time': appt.date_time,
+            'technician_name': appt.technician.first_name + " " + appt.technician.last_name,
+            'reason': appt.reason,
+            'status': appt.status,
+        }
+        for appt in appointments
+    ]
+
+    return render(request, 'appointments/search_appointments.html', {
+        'appointments': appointments_data
+    })
 
 
 
