@@ -4,6 +4,7 @@ from django.views.decorators.http import require_http_methods
 from .models import Appointment, Technician
 from common.json import ModelEncoder
 from django.db.models import Q
+from django.shortcuts import render
 #######################################
 #####ENCODERS##########################
 

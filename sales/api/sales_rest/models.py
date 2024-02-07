@@ -14,7 +14,7 @@ class Customer(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     address = models.CharField(max_length=150)
-    phone_number = models.CharField(max_length=12)
+    phone_number = models.CharField(max_length=15)
 
 class Sale(models.Model):
     automobile = models.ForeignKey(
