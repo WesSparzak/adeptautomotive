@@ -463,7 +463,7 @@ Example:
 ```
 
 TECHNICIAN DETAIL: This is a GET request as well, so no data needs to be provided here either. When you list technicians, you will
-see that they are assigned a value of "id". This is the value that will replace "<int:pk>. For example, if you wanted to see the technician
+see that they are assigned a value of "id". This is the value that will replace "<int:pk>". For example, if you wanted to see the technician
 details related to our technician "Donald", you would input the following address: http://localhost:8080/api/technicians/1/
 This would then lead to this:
 
@@ -535,8 +535,8 @@ This is the format that will be displayed.
 Spoiler alert! Remember, the way that it is returned to you is the way that the data needs to be accepted. Remember, the "id" is automatically generated, so you don't need to input that.
 Also, the "date" and "time" fields HAVE TO BE IN THIS FORMAT
 ```
-{
-	"service_appointment": [
+
+	"service_appointment":
 		{
 			"id": 1,
 			"vin": "1222",
