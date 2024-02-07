@@ -6,7 +6,6 @@ from common.json import ModelEncoder
 import json
 
 
-
 class SalespersonEncoder(ModelEncoder):
     model = Salesperson
     properties = [
@@ -49,6 +48,13 @@ class SaleEncoder(ModelEncoder):
         'salesperson': SalespersonEncoder(),
         'customer': CustomerEncoder(),
     }
+
+    # class Object:
+    #     def toJSON(self):
+    #         return json.dumps(self, default=lambda o: o.__dict__, 
+    #             sort_keys=True, indent=4)
+    
+    
 
 
 @require_http_methods(["GET", "POST"])
@@ -106,7 +112,7 @@ def sales_list(request):
     if request.method == "GET":
         sale = Sale.objects.all()
         return JsonResponse(
-            { 'sale': sale },
+            {"sale": sale},
             encoder=SaleEncoder,
         )
     else:
@@ -146,8 +152,9 @@ def sales_list(request):
         )
     
 
-@require_http_methods
+@require_http_methods(["DELETE"])
 def delete_sale(request, id):
     if request.method == "DELETE":
         count, _ = Sale.objects.filter(id=id).delete()
         return JsonResponse({'deleted': count > 0})
+
