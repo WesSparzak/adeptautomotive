@@ -12,7 +12,16 @@ function AddSale() {
     const[customer, setCustomer] = useState([])
     const[buyer, setBuyer] = useState('')
     const[price, setPrice] = useState('')
-    
+
+    // const fetchSoldData = async () => {
+    //     const soldUrl = 'http://localhost:8100/api/automobiles'
+    //     const response = await fetch (soldUrl)
+    //     if (response.ok) {
+    //         const data = await response.json()
+    //         setSold(data.autos.sold)
+    //         console.log(data.autos.sold)
+    //     }
+    // }
     const fetchAutosData = async () => {
         const autosUrl = 'http://localhost:8100/api/automobiles'
         const response = await fetch(autosUrl)
@@ -73,11 +82,22 @@ function AddSale() {
         }
         const response = await fetch(saleUrl, fetchConfig)
         if (response.ok) {
-            setVin('')
-            setSeller('')
-            setBuyer('')
-            setPrice('')
-            // Navigate('/')
+            const soldUrl = `http://localhost:8100/api/automobiles/${vin}/`
+            const soldFetchConfig = {
+                method: "PUT",
+                body: JSON.stringify({sold: true}),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            } 
+            const soldResponse = await fetch(soldUrl, soldFetchConfig)
+            if (soldResponse.ok) {
+                setVin('')
+                setSeller('')
+                setBuyer('')
+                setPrice('')
+                // Navigate('/')
+            }
         }
     }
     useEffect(() => {
@@ -96,7 +116,7 @@ return (
             <div className="mb-3">
                 <select onChange={handleVinChange} value={vin} required name="vin" id="vin" className="form-select">
                     <option value=''>Automobile VIN</option>
-                    {autos.map((car) => {
+                    {autos.filter(car => car.sold === false).map((car) => {
                     return (
                         <option key={car.id} value={car.vin}>{car.vin}</option> 
                     )

@@ -32,6 +32,7 @@ class AutomobileVOEncoder(ModelEncoder):
     properties = [
         'vin',
         'id',
+        'sold',
     ]
 
 class SaleEncoder(ModelEncoder):
