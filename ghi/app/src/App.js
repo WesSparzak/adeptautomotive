@@ -18,7 +18,7 @@ import AddSalesperson from './AddSalesperson';
 import ListCustomers from './ListCustomers';
 import AddCustomer from './AddCustomer';
 // import ListSales from './ListSales';
-// import AddSale from './AddSale';
+import AddSale from './AddSale';
 // import UnsoldOnly from './UnsoldOnly';
 
 
@@ -45,9 +45,9 @@ function App() {
           {/* <Route path="/salesperson/history" element={<SalespersonHistory />} /> */}
           <Route path="/customers" element={<ListCustomers />} />
           <Route path="/customer/new" element={<AddCustomer />} />
-          {/* <Route path="/sales" element={<ListSales />} />
+          {/* <Route path="/sales" element={<ListSales />} /> */}
           <Route path="/sale/new" element={<AddSale />} />
-          <Route path="/unsoldonly" element={<UnsoldOnly />} />  */}
+          {/* <Route path="/unsoldonly" element={<UnsoldOnly />} />  */}
         </Routes>
       </div>
     </BrowserRouter>

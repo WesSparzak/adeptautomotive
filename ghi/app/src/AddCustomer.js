@@ -62,7 +62,7 @@ return (
         <div className="offset-3 col-6">
         <div className="shadow p-4 mt-4">
             <h1>Add a Customer</h1>
-            <form onSubmit={handleSubmit} id="create-shoes-form">
+            <form onSubmit={handleSubmit} id="create-customer-form">
             <div className="form-floating mb-3">
                 <input onChange={handleFirstNameChange} value={firstName} placeholder="First Name" required type="text" name="firstName" id="firstName" className="form-control" />
                 <label htmlFor="firstName">First Name</label>
