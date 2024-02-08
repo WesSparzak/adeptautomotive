@@ -11,7 +11,7 @@ import ListTechnicians from './ListTechnicians';
 import AddTechnician from './AddTechnician';
 import ListServiceAppointments from './ListServiceAppointments';
 import AddServiceAppointment from './AddServiceAppointment';
-// import ServiceAppointmentsHistory from './ServiceAppointmentsHistory';
+import ServiceAppointmentsHistory from './ServiceAppointmentsHistory';
 // import ListSalespeople from './ListSalespeople';
 // import AddSalesperson from './AddSalesperson';
 // import SalespersonHistory from './SalespersonHistory';
@@ -39,8 +39,8 @@ function App() {
           <Route path="/technician/new" element={<AddTechnician />} />
           <Route path="/serviceappointments" element={<ListServiceAppointments />} />
           <Route path="/serviceappointment/new" element={<AddServiceAppointment />} />
-          {/* <Route path="/serviceappointments/history" element={<ServiceAppointmentsHistory />} />
-          <Route path="/salespeople" element={<ListSalespeople />} />
+          <Route path="/serviceappointments/history" element={<ServiceAppointmentsHistory />} />
+          {/* <Route path="/salespeople" element={<ListSalespeople />} />
           <Route path="/salesperson/new" element={<AddSalesperson />} />
           <Route path="/salesperson/history" element={<SalespersonHistory />} />
           <Route path="/customers" element={<ListCustomers />} />

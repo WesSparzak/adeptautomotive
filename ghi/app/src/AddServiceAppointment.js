@@ -1,24 +1,42 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function AddServiceAppointment() {
     const [dateAndTime, setDateAndTime] = useState('');
     const [reason, setReason] = useState('');
-    const [status, setStatus] = useState('');
     const [vin, setVin] = useState('');
     const [customer, setCustomer] = useState('');
-    const [technicianId, setTechnicianId] = useState('');
+    const [technicians, setTechnicians] = useState([]);
+    const [selectedTechnicianId, setSelectedTechnicianId] = useState('');
     const navigate = useNavigate();
+
+
+    useEffect(() => {
+        const fetchTechnicians = async () => {
+            const url = 'http://localhost:8080/service_rest/technicians/';
+            try {
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error('Failed to fetch technicians');
+                }
+                const data = await response.json();
+                setTechnicians(data.technicians);
+            } catch (error) {
+                console.error("Could not fetch technicians:", error);
+            }
+        };
+        fetchTechnicians();
+    }, []);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         const data = {
             date_time: dateAndTime,
             reason: reason,
-            status: 'pending',
+            status: 'pending', // pending is going to be my default status so that I can view all appointments in my appointments list when they're created
             vin: vin,
             customer: customer,
-            technician_id: technicianId
+            technician_id: selectedTechnicianId
         };
         const appointmentUrl = 'http://localhost:8080/service_rest/appointments/';
         const fetchConfig = {
@@ -45,6 +63,7 @@ function AddServiceAppointment() {
                 <div className="shadow p-4 mt-4">
                     <h1>Add Service Appointment</h1>
                     <form onSubmit={handleSubmit}>
+
                         <div className="form-floating mb-3">
                             <input type="datetime-local" className="form-control" id="dateAndTime" value={dateAndTime} onChange={e => setDateAndTime(e.target.value)} required />
                             <label htmlFor="dateAndTime">Date & Time</label>
@@ -62,9 +81,23 @@ function AddServiceAppointment() {
                             <label htmlFor="customer">Customer Name</label>
                         </div>
                         <div className="form-floating mb-3">
-                            <input type="text" className="form-control" id="technicianId" value={technicianId} onChange={e => setTechnicianId(e.target.value)} placeholder="Technician ID" required />
-                            <label htmlFor="technicianId">Technician ID</label>
+                            <select
+                                className="form-control"
+                                id="technician"
+                                value={selectedTechnicianId}
+                                onChange={e => setSelectedTechnicianId(e.target.value)}
+                                required
+                            >
+                                <option value="">Select Technician</option>
+                                {technicians.map(technician => (
+                                    <option key={technician.technician_id} value={technician.technician_id}>
+                                        {technician.first_name}
+                                    </option>
+                                ))}
+                            </select>
+                            <label htmlFor="technician">Technician</label>
                         </div>
+
                         <button type="submit" className="btn btn-primary">Create Appointment</button>
                     </form>
                 </div>
@@ -74,3 +107,11 @@ function AddServiceAppointment() {
 }
 
 export default AddServiceAppointment;
+
+
+
+
+
+
+
+

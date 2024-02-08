@@ -183,6 +183,20 @@ def search_appointments(request):
 
 
 
+@require_http_methods(["GET"])
+def search_appointments_by_vin(request):
+    vin = request.GET.get('vin', '')
+
+    if vin:
+        appointments = Appointment.objects.filter(vin=vin)
+    else:
+        appointments = Appointment.objects.all()
+
+
+    appointments_data = list(appointments.values(
+        'id', 'date_time', 'reason', 'status', 'vin', 'customer', 'technician_id'
+    ))
+    return JsonResponse(appointments_data, safe=False)
 
 
 
