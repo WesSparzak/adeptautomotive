@@ -97,6 +97,7 @@ def api_edit_technician(request):
 def api_list_appointment(request):
     if request.method == "GET":
         appointments = Appointment.objects.all()
+
         return JsonResponse(
             {"appointments": appointments},
             encoder=AppointmentListEncoder,
@@ -104,7 +105,7 @@ def api_list_appointment(request):
     else:
         try:
             content = json.loads(request.body)
-            # this part is going to set default status to 'current' if not specified in the request body
+            # this part is going to set default status to 'pending' if not specified in the request body
             if 'status' not in content or content['status'] == '':
                 content['status'] = 'pending'
             appointment = Appointment.objects.create(**content)

@@ -18,7 +18,7 @@ function AddServiceAppointment() {
                 const response = await fetch(url);
                 if (!response.ok) {
                     throw new Error('Failed to fetch technicians');
-                }
+                } 
                 const data = await response.json();
                 setTechnicians(data.technicians);
             } catch (error) {
@@ -107,11 +107,3 @@ function AddServiceAppointment() {
 }
 
 export default AddServiceAppointment;
-
-
-
-
-
-
-
-
