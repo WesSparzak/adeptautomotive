@@ -16,20 +16,11 @@ function ListSalespeople() {
     useEffect(() => {
         getData()
     }, [])
-console.log(salesPeople)
-    async function handleDelete(id) {
-        const url = `http://localhost:8090/api/salespeople/${id}/`
-        const fetchConfig = {
-            method: "DELETE"
-        }
-        await fetch(url, fetchConfig)
-        alert("remove this salesperson from the list?")
-        await getData()
-    } 
+
     return (
         <div>
             <h1>Salespeople</h1>
-            <table class="table table-striped">
+            <table className="table table-striped">
                 <thead>
                     <tr>
                         <th>Employee ID</th>

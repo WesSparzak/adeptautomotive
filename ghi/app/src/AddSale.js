@@ -12,6 +12,7 @@ function AddSale() {
     const[customer, setCustomer] = useState([])
     const[buyer, setBuyer] = useState('')
     const[price, setPrice] = useState('')
+    const navigate = useNavigate()
 
     // const fetchSoldData = async () => {
     //     const soldUrl = 'http://localhost:8100/api/automobiles'
@@ -96,7 +97,7 @@ function AddSale() {
                 setSeller('')
                 setBuyer('')
                 setPrice('')
-                // Navigate('/')
+                navigate('/sales')
             }
         }
     }
@@ -138,7 +139,7 @@ return (
                     <option value=''>Customer</option>
                     {customer.map((buyer) => {
                     return (
-                        <option key={buyer.id} value={buyer.id}> {buyer.lastName}{buyer.first_name}</option> 
+                        <option key={buyer.id} value={buyer.id}>{buyer.first_name} {buyer.last_name}</option> 
                     )
                     })}
                 </select>
