@@ -5,7 +5,9 @@ urlpatterns = [
     path('technicians/', views.api_list_technician, name='list_technicians'),
     path('technicians/<int:pk>/', views.api_edit_technician, name='edit_technician'),
     path('appointments/', views.api_list_appointment, name='list_appointments'),
-    path('appointments/cancel/<int:pk>/', views.api_cancel_appointment, name='cancel_appointment'),
-    path('appointments/finish/<int:pk>/', views.api_finish_appointment, name='finish_appointment'),
-    path('appointments/search/', search_appointments, name='search_appointments'),
+    # path('appointments/cancel/<int:pk>/', views.api_cancel_appointment, name='cancel_appointment'),
+    # path('appointments/finish/<int:pk>/', views.api_finish_appointment, name='finish_appointment'),
+    path('appointments/search/', views.search_appointments, name='search_appointments'),
+    path('appointments/edit/<int:pk>/', views.api_edit_appointment, name='edit_appointment'),
+    path('appointments/<int:pk>/update_status/', views.api_update_appointment_status, name='update_appointment_status'),
 ]
