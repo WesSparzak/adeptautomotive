@@ -33,6 +33,7 @@ class Appointment(models.Model):
     vin = models.CharField(max_length=17)  # Standard length for a VIN
     customer = models.CharField(max_length=200)
     technician = models.ForeignKey(Technician, on_delete=models.CASCADE)
+    # vip = models.BooleanField(default=False) I JUST CAN'T GET THIS TO WORK AHHHHHHHHHHHHHH -Wes
 
     def __str__(self):
         return f"Appointment for {self.customer} on {self.date_time.strftime('%Y-%m-%d %H:%M')}"

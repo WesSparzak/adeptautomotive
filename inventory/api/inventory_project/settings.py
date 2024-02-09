@@ -30,7 +30,11 @@ DEBUG = True
 # Application definition
 
 INSTALLED_APPS = [
+<<<<<<< HEAD
     "corsheaders",
+=======
+    'corsheaders',
+>>>>>>> 63192c5210118820f53d60755b7bcddbd905e879
     "inventory_rest.apps.InventoryRestConfig",
     'django.contrib.admin',
     'django.contrib.auth',
