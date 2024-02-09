@@ -108,6 +108,10 @@ def api_list_appointment(request):
             # this part is going to set default status to 'pending' if not specified in the request body
             if 'status' not in content or content['status'] == '':
                 content['status'] = 'pending'
+            technician_id = content['technician_id']
+            technician = Technician.objects.get(id=technician_id)
+            content['technician'] = technician
+            del content['technician_id']
             appointment = Appointment.objects.create(**content)
             return JsonResponse(
                 appointment,
