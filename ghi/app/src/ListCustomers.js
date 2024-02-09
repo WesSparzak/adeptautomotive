@@ -16,7 +16,7 @@ function ListCustomers() {
     useEffect(() => {
         getData()
     }, [])
-console.log(customers, "customers")
+
     return (
         <div>
             <h1>Customers</h1>

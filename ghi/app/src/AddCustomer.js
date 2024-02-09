@@ -77,7 +77,7 @@ return (
             </div>
             <div className="form-floating mb-3">
                 <input onChange={handlePhoneNumberChange} value={phoneNumber} placeholder="phoneNumber" required type="text" name="phoneNumber" id="phoneNumber" className="form-control" />
-                <label htmlFor="phoneNumber">Phone Number - <i>(XXX) XXX-XXXX</i> - <strong>US PHONE NUMBERS ONLY</strong></label>
+                <label htmlFor="phoneNumber">Phone Number</label>
             </div>
             <button className="btn btn-primary" onClick={handleSubmit}>Create</button>
             </form>
