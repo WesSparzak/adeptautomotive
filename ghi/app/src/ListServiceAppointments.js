@@ -24,8 +24,6 @@ function ListServiceAppointments() {
     };
 
 
-console.log(appointments, "spaghetti")
-
     async function updateAppointmentStatus(newStatus, appointmentId) {
         const url = `http://localhost:8080/service_rest/appointments/${appointmentId}/update_status/`;
         const fetchConfig = {

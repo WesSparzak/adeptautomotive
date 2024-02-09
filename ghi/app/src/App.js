@@ -1,12 +1,12 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MainPage from './MainPage';
 import Nav from './Nav';
-// import ListManufacturers from './ListManufacturers';
-// import AddManufacturer from './AddManufacturer';
-// import ListModels from './ListModels';
-// import AddModel from './AddModel';
-// import ListAutomobiles from './ListAutomobiles';
-// import AddAutomobile from './AddAutomobile';
+import ListManufacturers from './ListManufacturers';
+import AddManufacturer from './AddManufacturer';
+import ListModels from './ListModels';
+import AddModel from './AddModel';
+import ListAutomobiles from './ListAutomobiles';
+import AddAutomobile from './AddAutomobile';
 import ListTechnicians from './ListTechnicians';
 import AddTechnician from './AddTechnician';
 import ListServiceAppointments from './ListServiceAppointments';
@@ -29,12 +29,12 @@ function App() {
       <div className="container">
         <Routes>
           <Route path="/" element={<MainPage />} />
-          {/* <Route path="/manufacturers" element={<ListManufacturers />} />
+          <Route path="/manufacturers" element={<ListManufacturers />} />
           <Route path="/manufacturer/new" element={<AddManufacturer />} />
           <Route path="/models" element={<ListModels />} />
           <Route path="/model/new" element={<AddModel />} />
           <Route path="/automobiles" element={<ListAutomobiles />} />
-          <Route path="/automobile/new" element={<AddAutomobile />} /> */}
+          <Route path="/automobile/new" element={<AddAutomobile />} />
           <Route path="/technicians" element={<ListTechnicians />} />
           <Route path="/technician/new" element={<AddTechnician />} />
           <Route path="/serviceappointments" element={<ListServiceAppointments />} />
