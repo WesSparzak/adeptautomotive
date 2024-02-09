@@ -101,6 +101,7 @@ def customer_list(request):
         )
     
 
+
 @require_http_methods(["DELETE"])
 def customer_delete(request, id):
     if request.method == "DELETE":
