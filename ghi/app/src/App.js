@@ -1,24 +1,24 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MainPage from './MainPage';
 import Nav from './Nav';
-import ListManufacturers from './manufacturers';
-import AddManufacturer from './manufacturer/new';
-import ListModels from './models';
-import AddModel from './model/new';
-import ListAutomobiles from './automobiles';
-import AddAutomobile from './automobile/new';
-import ListTechnicians from './technicians';
-import AddTechnician from './technician/new';
-import ListServiceAppointments from './serviceappointments';
-import AddServiceAppointment from './serviceappointment/new';
-import ServiceAppointmentsHistory from './serviceappointment/history';
-import ListSalespeople from './salespeople';
-import AddSalesperson from './salesperson/new';
-import SalespersonHistory from './salesperson/history';
-import ListCustomers from './customers';
-import AddCustomer from './customer/new';
-import ListSales from './sales';
-import AddSale from './sale/new';
+import ListManufacturers from './ListManufacturers';
+import AddManufacturer from './AddManufacturer';
+import ListModels from './ListModels';
+import AddModel from './AddModel';
+import ListAutomobiles from './ListAutomobiles';
+import AddAutomobile from './AddAutomobile';
+import ListTechnicians from './ListTechnicians';
+import AddTechnician from './AddTechnician';
+import ListServiceAppointments from './ListServiceAppointments';
+import AddServiceAppointment from './AddServiceAppointment';
+import ServiceAppointmentsHistory from './ServiceAppointmentsHistory';
+import ListSalespeople from './ListSalespeople';
+import AddSalesperson from './AddSalesperson';
+import SalespersonHistory from './SalespersonHistory';
+import ListCustomers from './ListCustomers';
+import AddCustomer from './AddCustomer';
+import ListSales from './ListSales';
+import AddSale from './AddSale';
 
 
 function App() {
