@@ -578,3 +578,6 @@ that it was added, just look at your service appointment list after creating a s
 DELETE SERVICE APPOINTMENT - Just input the "id" of the service appointment that you want to delete at the end of the url. For example, if we wanted to delete the above service history appointment for Barry
 because we accidently input his name as "Gary", we would just enter 'http://localhost:8080/api/serviceappointment/6' into the field and send the request. We will receive a confirmation message saying that
 the service appointment was deleted.
+
+
+![alt text](<CarsCars context map.png>)
