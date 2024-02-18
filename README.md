@@ -1,4 +1,6 @@
-# CarCar
+# Adept Automotive
+
+### While the README is mostly accurate, there is a lot of relic information that needs to be updated and dates back to early February 2024. ###
 
 CarCar is an application I have created with my teammate for managing the aspects of an automobile dealership. It manages the inventory, automobile sales, and automobile services.
 
