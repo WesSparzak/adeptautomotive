@@ -1,16 +1,21 @@
 import { NavLink } from 'react-router-dom';
+import adept_automotive_logo from "./images/adept_automotive_logo.jpeg";
 import './index.css';
 
 function Nav() {
   return (
     <nav className="navbar navbar-expand-lg">
       <div className="container-fluid">
-        <NavLink className="navbar-brand" to="/">CarCar</NavLink>
+        <NavLink className="navbar-brand" color='black' to="/">
+
+          <img src={adept_automotive_logo} alt="Adept Automotive Logo" className='logo_navbar' />
+
+          </NavLink>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon"></span>
+          <span className="navbar-toggler-icon">Menu</span>
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+          <ul className="navList">
             <li className="nav-item">
               <NavLink className="nav-link" to="/manufacturers">Manufacturers</NavLink>
             </li>

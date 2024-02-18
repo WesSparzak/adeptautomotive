@@ -1,11 +1,22 @@
+import adept_automotive_logo from "./images/adept_automotive_logo.jpeg";
+
 function MainPage() {
   return (
-    <div className="px-4 py-5 my-5 text-center">
-      <h1 className="display-5 fw-bold">CarCar</h1>
+    <div className="mainPageBody">
+      <h1 className="display-5 fw-bold"><img src={adept_automotive_logo} alt="Adept Automotive Logo" className="mainLogo" /></h1>
       <div className="col-lg-6 mx-auto">
-        <p className="lead mb-4">
-          The premiere solution for automobile dealership
-          management!
+        <p className="mainpageParagraph">
+          If you're buying a car, you want someone with talent. <br />
+          <br />
+          Someone, adept. <br />
+          <br />
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
+          ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
+          in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
+          sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+          mollit anim id est laborum. <br />
         </p>
       </div>
     </div>
