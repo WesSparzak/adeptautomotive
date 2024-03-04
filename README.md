@@ -1,6 +1,6 @@
-# CarCar
+# Adept Automotive
 
-CarCar is an application I have created with my teammate for managing the aspects of an automobile dealership. It manages the inventory, automobile sales, and automobile services.
+AdeptAutomotive is an application I have created with my teammate for managing the aspects of an automobile dealership. It manages the inventory, automobile sales, and automobile services.
 
 Team:
 
