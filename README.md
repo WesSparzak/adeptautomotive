@@ -1,5 +1,9 @@
 # Adept Automotive
 
+
+### Note ###
+I have not gone through my readme and updated some nomenclature since adapting to my new repo. Some naming conventions may not match up. 
+
 AdeptAutomotive is an application I have created with my teammate for managing the aspects of an automobile dealership. It manages the inventory, automobile sales, and automobile services.
 
 Team:
