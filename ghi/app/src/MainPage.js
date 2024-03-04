@@ -1,18 +1,18 @@
 import adept_automotive_logo from "./images/adept_automotive_logo.jpeg";
-// import { useRef } from "react";
-// import gsap from "gsap";
-// import { useGSAP } from "@gsap/react";
+import { useRef } from "react"
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 
-// #### all commented out area is attempt to use GSAP, work in progress ####
 
 function MainPage() {
 
-  // const box = useRef();
+  const container = useRef();
 
-  // useGSAP(() => {
-  //   gsap.to(box.curent, {x:360});
-  // });
+  useGSAP(() => {
+    gsap.to(".box", {x: 360})
+
+  }, { scope: container });
 
   return (
     <div className="mainPageBody">
